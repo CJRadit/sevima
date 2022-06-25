@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kelas_id')->constrained('kelas');
             $table->string('nama');
-            $table->time('durasi');
+            $table->float('durasi_jam');
             $table->dateTime('datetime_mulai');
             $table->dateTime('datetime_akhir');
             $table->timestamps();

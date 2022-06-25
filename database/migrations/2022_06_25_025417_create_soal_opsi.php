@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('soal_opsi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('soal_id')->constrained('soal');
-            $table->enum('tipe_opsi', ['teks', 'gambar']);
             $table->text('opsi');
             $table->timestamps();
         });

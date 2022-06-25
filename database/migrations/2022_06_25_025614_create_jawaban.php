@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('tes_id')->constrained('tes');
-            $table->time('durasi');
+            $table->float('durasi_jam');
             $table->dateTime('datetime_mulai');
             $table->dateTime('datetime_akhir');
             $table->timestamps();

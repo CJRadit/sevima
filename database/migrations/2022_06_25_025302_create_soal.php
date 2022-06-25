@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tes_id')->constrained('tes');
             $table->text('pertanyaan');
-            $table->float('skor');
             $table->timestamps();
         });
     }
