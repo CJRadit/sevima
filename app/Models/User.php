@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     public function kelas()
     {
-        return $this->belongsToMany(Kelas::class, 'user_kelas')->withPivot('is_owner');
+        return $this->belongsToMany(Kelas::class, 'user_kelas');
     }
 }

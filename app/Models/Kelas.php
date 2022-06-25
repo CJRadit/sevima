@@ -14,10 +14,16 @@ class Kelas extends Model
     protected $fillable = [
         'nama',
         'kode',
+        'owner_id',
     ];
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'user_kelas')->withPivot('is_owner');
+        return $this->belongsToMany(User::class, 'user_kelas');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
     }
 }
