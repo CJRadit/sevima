@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuruKelasController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\TesController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth', 'cekguru'])->group(function () {
+    Route::get('test', function() {
+        echo 'test';
+    });
+    Route::prefix('kelas')->group(function () {
+        Route::get('create', [GuruKelasController::class, 'create']);
+        Route::post('/', [GuruKelasController::class, 'store']);
+        Route::prefix('{kode_kelas}')->group(function () {
+            
+        });
+    });
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
     Route::prefix('kelas/{kode_kelas}')->group(function() {
@@ -28,8 +42,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
