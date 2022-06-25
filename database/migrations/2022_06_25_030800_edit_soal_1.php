@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kelas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('kode', 8)->unique();
-            $table->timestamps();
+        Schema::table('soal', function (Blueprint $table) {
+            $table->foreignId('opsi_benar_id')->constrained('soal_opsi');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelas');
+        Schema::table('soal', function (Blueprint $table) {
+            $table->dropForeign(['opsi_benar_id']);
+        });
     }
 };

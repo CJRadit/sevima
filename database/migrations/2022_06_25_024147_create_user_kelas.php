@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kelas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('kode', 8)->unique();
-            $table->timestamps();
+        Schema::create('user_kelas', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->boolean('is_owner')->nullable()->default(false);
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('user_kelas');
     }
 };

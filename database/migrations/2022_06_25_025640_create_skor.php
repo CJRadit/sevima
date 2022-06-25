@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kelas', function (Blueprint $table) {
+        Schema::create('skor', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('kode', 8)->unique();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('tes_id')->constrained('tes');
+            $table->foreignId('jawaban_id')->constrained('jawaban');
+            $table->float('skor');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelas');
+        Schema::dropIfExists('skor');
     }
 };
