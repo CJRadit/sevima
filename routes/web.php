@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [KelasController::class, 'index']);
         Route::prefix('tes/{id}')->group(function() {
             Route::get('/', [TesController::class, 'index']);
+            Route::post('/', [TesController::class, 'store']);
+            Route::get('skor', [SkorController::class, 'get_skor']);
         });
     });
 });
