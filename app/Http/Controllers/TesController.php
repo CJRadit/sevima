@@ -14,7 +14,6 @@ class TesController extends Controller
     {
         Kelas::where('kode', $r->segment(2))->firstOrFail();
         
-        $this->kode_kelas = $r->segment(2);
         $this->tes = Tes::findOrFail($r->segment(4));
     }
 
