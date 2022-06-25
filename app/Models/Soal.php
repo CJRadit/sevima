@@ -14,7 +14,11 @@ class Soal extends Model
     protected $fillable = [
         'tes_id',
         'pertanyaan',
-        'opsi_benar_id'
+        // 'opsi_benar_id'
+    ];
+
+    protected $hidden = [
+        'opsi_benar_id',
     ];
 
     /**

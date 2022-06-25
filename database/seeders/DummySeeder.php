@@ -33,7 +33,8 @@ class DummySeeder extends Seeder
 
         DB::table('kelas')->insert([
             'nama' => 'Kelas Guru A',
-            'kode' => Str::random(8),
+            'kode' => 'onFjfEyU',
+            // 'kode' => Str::random(8),
         ]);
 
         DB::table('user_kelas')->insert([
@@ -59,6 +60,10 @@ class DummySeeder extends Seeder
             'tes_id' => 1,
             'pertanyaan' => '5 + 5 = ...',
         ]);
+        DB::table('soal')->insert([
+            'tes_id' => 1,
+            'pertanyaan' => '30 : 6 = ...',
+        ]);
 
         DB::table('soal_opsi')->insert([
             'soal_id' => 1,
@@ -79,6 +84,27 @@ class DummySeeder extends Seeder
         DB::table('soal_opsi')->insert([
             'soal_id' => 1,
             'opsi' => '25',
+        ]);
+
+        DB::table('soal_opsi')->insert([
+            'soal_id' => 2,
+            'opsi' => '1',
+        ]);
+        DB::table('soal_opsi')->insert([
+            'soal_id' => 2,
+            'opsi' => '2',
+        ]);
+        DB::table('soal_opsi')->insert([
+            'soal_id' => 2,
+            'opsi' => '3',
+        ]);
+        DB::table('soal_opsi')->insert([
+            'soal_id' => 2,
+            'opsi' => '4',
+        ]);
+        DB::table('soal_opsi')->insert([
+            'soal_id' => 2,
+            'opsi' => '5',
         ]);
     }
 }
