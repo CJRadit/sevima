@@ -21,7 +21,7 @@ class TesController extends Controller
 
     public function index()
     {
-        $data = [];
+        $soal = [];
 
         foreach (Soal::where('tes_id', $this->id)->get() as $s) {
             $opsi = [];
@@ -33,13 +33,14 @@ class TesController extends Controller
                 ]);
             }
 
-            array_push($data, [
+            array_push($soal, [
                 'soal_id' => $s->id,
                 'pertanyaan' => $s->pertanyaan,
                 'opsi' => $opsi,
             ]);
         }
 
-        return $data;
+        $mode_view = 'tes';
+        return view('tes/tes', compact('soal', 'mode_view'));
     }
 }
