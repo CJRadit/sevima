@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class DummySeeder extends Seeder
@@ -18,6 +19,7 @@ class DummySeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('users')->insert([
             'name' => 'Guru A',
             'email' => 'gurua@gmail.com',
@@ -34,18 +36,17 @@ class DummySeeder extends Seeder
         DB::table('kelas')->insert([
             'nama' => 'Kelas Guru A',
             'kode' => 'onFjfEyU',
+            'owner_id' => 1,
             // 'kode' => Str::random(8),
         ]);
 
         DB::table('user_kelas')->insert([
             'user_id' => 1,
             'kelas_id' => 1,
-            'is_owner' => 1,
         ]);
         DB::table('user_kelas')->insert([
             'user_id' => 2,
             'kelas_id' => 1,
-            'is_owner' => 0,
         ]);
 
         DB::table('tes')->insert([
@@ -59,10 +60,12 @@ class DummySeeder extends Seeder
         DB::table('soal')->insert([
             'tes_id' => 1,
             'pertanyaan' => '5 + 5 = ...',
+            'opsi_benar_id'=> '2',
         ]);
         DB::table('soal')->insert([
             'tes_id' => 1,
             'pertanyaan' => '30 : 6 = ...',
+            'opsi_benar_id'=> '10',
         ]);
 
         DB::table('soal_opsi')->insert([
@@ -106,5 +109,6 @@ class DummySeeder extends Seeder
             'soal_id' => 2,
             'opsi' => '5',
         ]);
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('kode', 8)->unique();
+            $table->foreignId('owner_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
