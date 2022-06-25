@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_kelas', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('kelas_id')->constrained('kelas');
             $table->boolean('is_owner')->nullable()->default(false);
