@@ -20,7 +20,9 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                @if ($mode_view != 'tes')
+                @if ($mode_view == 'tes')
+                    <span class="navbar-brand brand-text font-weight-light">Aplikasi Sevima</span>
+                @else
                     <a href="/" class="navbar-brand">
                         {{-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
                         <span class="brand-text font-weight-light">Aplikasi Sevima</span>
@@ -74,18 +76,15 @@
                             </li>
                         </ul>
                     </div> --}}
-                @else
-                    <span class="navbar-brand brand-text font-weight-light">Aplikasi Sevima</span>
+                    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                        <li class="nav-item">
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary no-href"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
+                            </form>
+                        </li>
+                    </ul>
                 @endif
-
-                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    <li class="nav-item">
-                        <form action="/logout" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-primary no-href"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
-                        </form>
-                    </li>
-                </ul>
             </div>
         </nav>
         <!-- /.navbar -->

@@ -16,6 +16,8 @@
         <div class="row">
             <div class="card card-outline card-primary col-12">
                 <form action="{{ Request::url() }}" method="post">
+                    <input type="hidden" name="_jawaban_id" value="{{ $jawaban_id }}">
+                    @csrf
                     <div class="card-body">
                         @php
                             $nomor_soal = 1;
