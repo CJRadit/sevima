@@ -27,13 +27,7 @@ class GuruTesController extends Controller
     {
         $durasi_jam = 2;
 
-        Tes::updateOrCreate([
-            'kelas_id' => $this->kode_kelas->id,
-            'nama' => $r->nama_tes,
-            'durasi_jam' => $durasi_jam,
-            'datetime_mulai' => $r->datetime_mulai,
-            'datetime_akhir' => $r->datetime_akhir,
-        ], [
+        Tes::create([
             'kelas_id' => $this->kode_kelas->id,
             'nama' => $r->nama_tes,
             'durasi_jam' => $durasi_jam,
