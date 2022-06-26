@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruKelasController;
+use App\Http\Controllers\GuruTesController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\TesController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,10 @@ Route::middleware(['auth', 'cekguru'])->group(function () {
         Route::get('create', [GuruKelasController::class, 'create']);
         Route::post('/', [GuruKelasController::class, 'store']);
         Route::prefix('{kode_kelas}')->group(function () {
-            
+            Route::prefix('tes')->group(function () {
+                Route::get('create', [GuruTesController::class, 'create']);
+                Route::post('/', [GuruTesController::class, 'store']);
+            });
         });
     });
 });
